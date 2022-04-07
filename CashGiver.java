@@ -53,6 +53,7 @@ public class CashGiver {
             String num025Time = moneyPlace.format(0.25*num025);
             String num010Time = moneyPlace.format(0.1*num010);
             String num005Time = moneyPlace.format(0.05*num005);
+            String num001Time = moneyPlace.format(0.01*num001);
             double num100TimeDbl = Double.parseDouble(num100Time);
             double num50TimeDbl = Double.parseDouble(num50Time);
             double num20TimeDbl = Double.parseDouble(num20Time);
@@ -62,6 +63,17 @@ public class CashGiver {
             double num025TimeDbl = Double.parseDouble(num025Time);
             double num010TimeDbl = Double.parseDouble(num010Time);
             double num005TimeDbl = Double.parseDouble(num005Time);
+            double num001TimeDbl = Double.parseDouble(num001Time);
+            double sum = num100TimeDbl + num50TimeDbl + num20TimeDbl + num10TimeDbl + num5TimeDbl + num1TimeDbl + num025TimeDbl + num010TimeDbl + num005TimeDbl + num001TimeDbl;
+            String roundedSum = moneyPlace.format(sum);
+            String roundedOriginalInp = moneyPlace.format(originalInp);
+            double dblRoundedSum = Double.parseDouble(roundedSum);
+            double dblRoundedOriginalInp = Double.parseDouble(roundedOriginalInp);
+            if (dblRoundedSum != dblRoundedOriginalInp) {
+                num001++;
+                num001TimeDbl += 0.01;
+            }
+
             System.out.println("$100: " + num100);
             System.out.println("$50: " + num50);
             System.out.println("$20: " + num20);
@@ -72,7 +84,7 @@ public class CashGiver {
             System.out.println("$0.10: " + num010);
             System.out.println("$0.05: " + num005);
             System.out.println("$0.01: " + num001);
-            System.out.println(num100TimeDbl + " + " + num50TimeDbl + " + " + num20TimeDbl + " + " + num10TimeDbl + " + " + num5TimeDbl + " + " + num1TimeDbl + " + " + num025TimeDbl + " + " + num010TimeDbl + " + " + num005TimeDbl + " + " + (originalInp-num100TimeDbl-num50TimeDbl-num20TimeDbl-num10TimeDbl-num5TimeDbl-num1TimeDbl-num025TimeDbl-num010TimeDbl-num005TimeDbl) + " = " + originalInp + " (IF ONE OF THE ADDENDS HAVE MORE THAN 2 DECIMALS, ONLY LOOK AT THE TENTHS AND HUNDREDTHS PLACES)");
+            System.out.println(num100TimeDbl + " + " + num50TimeDbl + " + " + num20TimeDbl + " + " + num10TimeDbl + " + " + num5TimeDbl + " + " + num1TimeDbl + " + " + num025TimeDbl + " + " + num010TimeDbl + " + " + num005TimeDbl + " + " + num001TimeDbl + " = " + originalInp + " (IF ONE OF THE ADDENDS HAVE MORE THAN 2 DECIMALS, ONLY LOOK AT THE TENTHS AND HUNDREDTHS PLACES)");
     }
     public static void uniformBills(double inp) {
         ArrayList<Double> fitsInp = new ArrayList<Double>();
